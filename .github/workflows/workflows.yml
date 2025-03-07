@@ -22,8 +22,7 @@ jobs:
           restore-keys: docker-cache-
 
       - name: Create .env file
-        run: |
-          echo """${{ secrets.ENV_FILE }}""" >> .env
+        run: echo """${{ secrets.ENV_FILE }}""" >> .env
 
       - name: Add Remote Server Fingerprint to Known Hosts
         run: ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts || true
